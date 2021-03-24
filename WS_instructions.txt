@@ -1,0 +1,66 @@
+/*
+
+Git Setup for SAP HANA Cloud Workshop
+
+*/
+
+-- Setup Git Environment  (One Time Only)
+--      this info ends up in $HOME/.gitconfig
+
+git config --global user.email "scott.groth.58@gmail.com"
+git config --global user.name "scottgroth58"
+git config --list
+
+-- Generate SSH Key fir BAS Project
+
+ssh-keygen -t ed25519 -C "scott.groth.58@gmail.com"
+
+-- OUTPUT --
+
+user $ ssh-keygen -t ed25519 -C "scott.groth.58@gmail.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/user/.ssh/id_ed25519): 
+Created directory '/home/user/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/user/.ssh/id_ed25519.
+Your public key has been saved in /home/user/.ssh/id_ed25519.pub.
+
+The key fingerprint is:
+SHA256:DFjN2zAKoelVOdkbonZaiyMCJYr4Mlm3qvwc9BsrJzI scott.groth.58@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|    ..o*         |
+|. .o.+= B        |
+|+oo oo.+ B       |
+|=...+ +oo .      |
+|.+.+ * .S        |
+|= + * .          |
+| + + +           |
+|.Eoo..+          |
+|.o+o+o           |
++----[SHA256]-----+
+
+-- Create SSH Key in GutHub
+
+SSH Key Name in Github = SCG-BAS
+
+-- Create NEW Repository in GitHub for this Workshop
+
+Github Repository = HANA-Cloud-WS 
+
+-- Generated Code from Github to CREATE Repo 
+
+-- Edit .gitignore first
+**/node_modules/**
+.env*
+
+echo "# HANA-Cloud-WS" >> README.md
+git init
+-- Make sure .gitignore is correct --
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:scottgroth58/HANA-Cloud-WS.git
+git push -u origin main
+
